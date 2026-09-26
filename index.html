@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#132a27" />
+    <meta name="description" content="A quiet place for a good game of chess." />
+    <title>The Endgame | Chess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="importmap">
+      {"imports":{"chess.js":"https://esm.sh/chess.js@1.4.0"}}
+    </script>
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="The Endgame home">
+          <span class="brand-mark" aria-hidden="true">♞</span>
+          <span>THE ENDGAME</span>
+        </a>
+        <div class="topbar-note"><span class="live-dot"></span> LOCAL GAME <span class="topbar-divider">/</span> TWO PLAYERS</div>
+      </header>
+
+      <section class="game-layout" aria-label="Chess game">
+        <div class="board-column">
+          <div class="player-row player-top" id="black-player">
+            <div class="player-identity">
+              <span class="player-token black-token" aria-hidden="true">♚</span>
+              <div><span class="player-name">Black</span><span class="player-caption">Dark pieces</span></div>
+            </div>
+            <div class="captured" id="black-captured" aria-label="Black's captured pieces"></div>
+          </div>
+          <div class="board-frame">
+            <div class="board" id="board" role="grid" aria-label="Chess board"></div>
+          </div>
+          <div class="player-row player-bottom" id="white-player">
+            <div class="player-identity">
+              <span class="player-token white-token" aria-hidden="true">♔</span>
+              <div><span class="player-name">White</span><span class="player-caption">Light pieces</span></div>
+            </div>
+            <div class="captured" id="white-captured" aria-label="White's captured pieces"></div>
+          </div>
+        </div>
+
+        <aside class="game-panel" aria-label="Game information">
+          <div class="panel-heading">
+            <span class="eyebrow">THE CLASSIC</span>
+            <h1>A game of<br />quiet focus.</h1>
+          </div>
+          <div class="turn-indicator" id="turn-indicator" aria-live="polite">
+            <span class="turn-piece" id="turn-piece" aria-hidden="true">♔</span>
+            <div><span class="turn-label" id="turn-label">White to move</span><span class="turn-detail" id="turn-detail">Make your opening move</span></div>
+            <span class="turn-dot" id="turn-dot"></span>
+          </div>
+          <div class="move-section">
+            <div class="section-title"><span>MOVE HISTORY</span><span class="move-count" id="move-count">0 moves</span></div>
+            <div class="move-list" id="move-list" aria-label="Move history">
+              <div class="empty-history"><span aria-hidden="true">↗</span><span>Your game begins here.</span></div>
+            </div>
+          </div>
+          <div class="mode-switcher" aria-label="Game mode selector">
+            <button class="mode-button" data-mode="local" type="button">2 Players</button>
+            <button class="mode-button active" data-mode="computer" type="button">Vs Computer</button>
+          </div>
+          <div class="game-controls">
+            <button class="control-button primary-control" id="new-game" type="button"><span aria-hidden="true">＋</span> New game</button>
+            <div class="secondary-controls">
+              <button class="control-button" id="undo-move" type="button" aria-label="Undo last move" title="Undo last move" disabled><span aria-hidden="true">↶</span> Undo</button>
+              <button class="control-button icon-control" id="flip-board" type="button" aria-label="Flip board" title="Flip board"><span aria-hidden="true">⇅</span></button>
+            </div>
+          </div>
+          <div class="panel-footer"><span class="footer-knight" aria-hidden="true">♘</span><span>Take your time.</span><span class="footer-rule"></span></div>
+        </aside>
+      </section>
+      <footer class="page-footer"><span>ONE BOARD. ALL THE TIME IN THE WORLD.</span><span>♟ &nbsp; EST. 1475</span></footer>
+    </main>
+
+    <dialog class="promotion-dialog" id="promotion-dialog" aria-labelledby="promotion-title">
+      <form method="dialog" class="promotion-content">
+        <span class="eyebrow">PAWN PROMOTION</span>
+        <h2 id="promotion-title">Choose your piece</h2>
+        <div class="promotion-options" id="promotion-options"></div>
+        <button class="cancel-promotion" value="cancel">Cancel</button>
+      </form>
+    </dialog>
+  </body>
+</html>
