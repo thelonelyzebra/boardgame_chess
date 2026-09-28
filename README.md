@@ -1,1 +1,3 @@
 # boardgame_chess
+
+ETH: 0x2F6B79c8e1e51A760Ef7930b40eEF7d668098328
